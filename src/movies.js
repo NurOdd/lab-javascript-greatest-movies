@@ -20,19 +20,67 @@ return DramaSpil.length;
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals 
 // validar les dades que passa l'array 
-function scoresAverage(moviesArray) {
-    if (movies.score.length==0)return 0; 
 
-let totalscore = moviesArray.reduce((sum, movies) => sum += movies.score); 
-console.log (sum)
-return toFixed(totalscore);
+function scoresAverage(moviesArray) {
+  //  if (moviesArray.length==0)return 0; } 
+  //  console.log(scoresAverage);  // provaré de fer-ho amb lo del !movie, que sembla q funciona
+  
+    if (!moviesArray.length) return 0; 
+ const puntuacions = moviesArray.map((data)=> {
+    if (data.score) return data.score; 
+    else return 0;})
+ console.log (puntuacions, 'hola'); 
+
+ let puntuacionTotal =puntuacions.reduce((sumaDePuntuacions, puntuacionTalCual)=>
+ (sumaDePuntuacions+puntuacionTalCual), 0);
+ console.log (puntuacionTotal ,'ok' )
+let average = puntuacionTotal/moviesArray.length
+console.log (average.toFixed(2), 'tt')
+return parseFloat(average.toFixed(2))
+
 }
+
+
+// let totalScore = moviesArray.filter((puntuacion)=> puntuacion.score);
+// console.log(totalScore);
+
+// let puntuacion = moviesArray.filter((punt)=>punt.score); // em sona q en lloc de punt Adri feia servir data???? 
+// //console.log(puntuacion) // me aparecen todas las peliculas pq todas tienen un score... 
+
+
+//  if (!puntuacion) return 0; //que crec q es lo mateix que abans
+
+// let puntuacionTotal= puntuacion.reduce((sumaDePuntuacion, puntuacionTalCual)=> {
+   
+//     console.log(sumaDePuntuacion);
+// return puntuacionTalCual + sumaDePuntuacion;
+
+// scoresAverage = (puntuacionTotal / moviesArray.length);
+
+// return scoresAverage.toFixed(2)
+// }
+
+
+// let ((sum, film) => {
+//     if (!film.score) return sum;
+//     console.log (sum,film)
+//     return sum+film; 
+//     //return sum+film.score;
+// console.log (totalscore)
+// return totalscore.toFixed(2);
+
+// return final = puntuaciontotal/totalfilm
+// })
+
+
 //se que no està bé he de revisarlo em falta sumar propiament i mirar de colocar bé els decimals (toFixed)
 
 
 /*
 // Iteration 4: Drama movies - Get the average of Drama Movies
 function dramaMoviesScore(moviesArray) {}
+
+
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {}
@@ -45,3 +93,4 @@ function turnHoursToMinutes(moviesArray) {}
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {}*/
+
